@@ -3,3 +3,12 @@
     padding: 20px;
     text-align: center;
 }
+
+.table-cell-border {
+  border-right: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table-cell-border:last-child {
+  border-right: none;
+}
