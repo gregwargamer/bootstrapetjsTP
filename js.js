@@ -127,14 +127,14 @@ function reinitialiserFormulaire() {
   document.getElementById('lieux').value = '';
   document.getElementById('date-depart').value = '';
   document.getElementById('date-arrivee').value = '';
-  document.getElementById('nb_adultes').value = '1';
+  document.getElementById('nb_adultes').value = '0';
   document.getElementById('nb_enfants').value = '0';
-  document.getElementById('nb_chambres').value = '1';
+  document.getElementById('nb_chambres').value = '0';
   document.getElementById('checkbox-travail').checked = false;
   
-  nbAdultes = 1;
+  nbAdultes = 0;
   nbEnfants = 0;
-  nbChambres = 1;
+  nbChambres = 0;
   lieuSejour = "";
   voyageTravail = 0;
   
