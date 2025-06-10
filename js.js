@@ -30,7 +30,7 @@ function updateChambres(change) {
 }
 
 function addAgeInput() {
-  let table = document.querySelector('.table');
+  let table = document.getElementById('form-table');
   let newRow = document.createElement('tr');
   newRow.className = 'age-enfant-row';
   newRow.innerHTML = `
@@ -93,42 +93,32 @@ function getAgesEnfants() {
 
 function rechercherReservation() {
   let lieu = document.getElementById('lieux').value || 'Non spécifié';
-  let dateDepart = document.getElementById('date-depart').value;
-  let dateArrivee = document.getElementById('date-arrivee').value;
+  let dateDepart = document.getElementById('date-depart').value || 'Non spécifiée';
+  let dateArrivee = document.getElementById('date-arrivee').value || 'Non spécifiée';
   let adultes = document.getElementById('nb_adultes').value;
   let enfants = document.getElementById('nb_enfants').value;
   let chambres = document.getElementById('nb_chambres').value;
   let travail = document.getElementById('checkbox-travail').checked;
   let agesEnfants = getAgesEnfants();
-
-  // Vérification des dates
-  if (dateDepart && dateArrivee) {
-    const dDepart = new Date(dateDepart);
-    const dArrivee = new Date(dateArrivee);
-    if (dDepart >= dArrivee) {
-      alert("La date de départ doit être antérieure à la date d'arrivée.");
-      return;
-    }
-  }
-
+  
   let resume = `
     <tr><td><h5>Récapitulatif</h5></td></tr>
     <tr><td><strong>Lieu :</strong> ${lieu}</td></tr>
-    <tr><td><strong>Départ :</strong> ${dateDepart || 'Non spécifiée'}</td></tr>
-    <tr><td><strong>Arrivée :</strong> ${dateArrivee || 'Non spécifiée'}</td></tr>
+    <tr><td><strong>Départ :</strong> ${dateDepart}</td></tr>
+    <tr><td><strong>Arrivée :</strong> ${dateArrivee}</td></tr>
     <tr><td><strong>Adultes :</strong> ${adultes}</td></tr>
     <tr><td><strong>Enfants :</strong> ${enfants}</td></tr>
   `;
-
+  
   if (agesEnfants.length > 0) {
     resume += `<tr><td><strong>Âges enfants :</strong> ${agesEnfants.join(', ')} ans</td></tr>`;
   }
-
+  
   resume += `
     <tr><td><strong>Chambres :</strong> ${chambres}</td></tr>
     <tr><td><strong>Voyage professionnel :</strong> ${travail ? 'Oui' : 'Non'}</td></tr>
   `;
-
+  
   let recapTable = document.querySelector('.col-md-4:last-child .table');
   recapTable.innerHTML = resume;
 }
